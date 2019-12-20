@@ -6,6 +6,7 @@ var bg_color = ['#FFDDAA','#FFEE99','#FFFFBB','#EEFFBB','#CCFF99','#99FF99','#BB
 
 var q_index = 0;
 var max_size = 10;
+var timeout_5;
 
 var countToNumber = function (element, number, suffix, duration) {
   $({count: parseInt(element.text().split("+")[0].replace(/\,/g, ''))}).animate({count: number}, {
@@ -54,23 +55,42 @@ function showQuestion(){
 	var str = '';
 	for(var i=0;i<max_size;i++){
 		randomQ_S(i);
-		str += '<div class="d-flex flex-column justify-content-center" style="border-radius:30px;background-color:' + bg_color[i] + ';width:100%;height:100%;position:absolute;left:0;top:0;z-index:' + (100-i) + '">';
+		str += '<div id="layer_' + i + '" class="d-flex flex-column justify-content-center" style="border-radius:30px;background-color:' + bg_color[i] + ';width:100%;height:100%;position:absolute;left:0;top:0;z-index:' + (100-i) + '">';
 		str += '<div class="p-2" style="font-size:1.8rem;padding-bottom:0 !important">Q'+ (i+1) + ':</div>';
 		str += '<div class="p-2" style="font-size:1.2rem;padding-top:0 !important">' + q[i] + '</div>';
 		for(var j=0;j<q_s[i].length;j++){
 			str += '<div class="p-2 btn btn-success" style="margin:.5rem .5rem;font-size:1rem" onclick="clickAns(this,\'' + q_s[i][j] +'\')">' + q_s[i][j] + '</div>';
 		}
+		str += '<div class="time">5</div>';
 		str += '</div>';
 	}
 	str += '<div class="d-flex flex-column justify-content-center" style="border-radius:30px;background-color:' + bg_color[10] + ';width:100%;height:100%;position:absolute;left:0;top:0;z-index:' + (100-10) + '">';
 	str += '<div class="p-2" style="text-align:center">分數結算</div>';
 	str += '<div id="count_score" class="p-2" style="text-align:center">0</div>';
 	str += '</div>';
+	console.log('add timeout_5');
+	timeout_5 = setTimeout(BtnCount, 1000);
 
 	$('#question').html(str);
 }
 
+
+BtnCount = function() {
+	console.log('q_index:' + q_index + ' , sle.length : ' + sel_ans.length );
+	$("#layer_" + q_index + ">div.time").html(parseInt($("#layer_" + q_index + ">div.time").html())-1);
+	if(parseInt($("#layer_" + q_index + ">div.time").html()) == 0){
+		checkTimeOut();
+		// clearTimeout(timeout_5);
+	}else{
+    	timeout_5 = setTimeout(BtnCount, 1000);
+    	console.log('add BtnCount');
+    }
+};
+
 function clickAns(e,ans){
+	clearTimeout(timeout_5);
+	console.log('clear timeout_5');
+	$("#layer_" + q_index + ">div.time").html('5');
 	sel_ans.push(ans);
 	q_index+=1;
 	randomQ_S(q_index);
@@ -80,8 +100,35 @@ function clickAns(e,ans){
 	setTimeout(function(){ $(e).parent().addClass('strong-hide'); }, 900);
 	//setTimeout(hideQuestion($(e).parent()),10000);
 	if(q_index < max_size){
-
+		setTimeout(function(){
+			timeout_5 = setTimeout(BtnCount, 1000);
+		},500);
 	}else{
+		score();
+	}
+}
+
+
+function checkTimeOut(){
+	if(q_index == sel_ans.length){
+		sel_ans.push("not select");
+		q_index+=1;
+		$("#layer_" + (q_index-1)).addClass('fade-out-x-active');
+		setTimeout(function(){ $("#layer_" + (q_index-1)).addClass('strong-hide'); }, 900);
+
+		$("#layer_" + q_index + ">div.time").html(5);
+
+		if(q_index == max_size){
+			clearTimeout(timeout_5);
+			score();
+		}
+		else{
+			setTimeout(function(){
+				timeout_5 = setTimeout(BtnCount, 1000);
+			},500);
+		}
+	}else if(sel_ans.length == max_size){
+		clearTimeout(timeout_5);
 		score();
 	}
 }
@@ -93,5 +140,6 @@ function score(){
 			count += 10;
 		}
 	}
+	console.log(count);
 	countToNumber($('#count_score'), count, '', 0);
 }
