@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<!--  XX-XX 為class,  XX_XX 為id -->
+	<title>wedding</title>
+	<link rel="icon" href="resources/img/rings.ico" type="image/x-icon"/>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="resources/js/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
+	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/js/question.js"></script>
+
+    <!--fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link type="text/css" rel="stylesheet" href="resources/css/portrait.css" />
+    <link type="text/css" rel="stylesheet" href="resources/css/landscape.css" />
+    <style>
+		@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+		/*loading ....*/
+		@keyframes ldio-l78vwtjns6 {
+		  0% {
+		    top: 109.97999999999999px;
+		    left: 109.97999999999999px;
+		    width: 0;
+		    height: 0;
+		    opacity: 1;
+		  }
+		  100% {
+		    top: 17.549999999999997px;
+		    left: 17.549999999999997px;
+		    width: 184.85999999999999px;
+		    height: 184.85999999999999px;
+		    opacity: 0;
+		  }
+		}
+
+		.ldio-l78vwtjns6 div {
+		  position: absolute;
+		  border-width: 7.02px;
+		  border-style: solid;
+		  opacity: 1;
+		  border-radius: 50%;
+		  animation: ldio-l78vwtjns6 1.01010101010101s cubic-bezier(0,0.2,0.8,1) infinite;
+		}
+
+		.ldio-l78vwtjns6 div:nth-child(1) {
+		  border-color: #e90c59
+		}
+
+		.ldio-l78vwtjns6 div:nth-child(2) {
+		  border-color: #46dff0;
+		  animation-delay: -0.505050505050505s;
+		}
+
+		.loadingio-spinner-ripple-dwq4jnyl7fk {
+		  width: 234px;
+		  height: 234px;
+		  display: inline-block;
+		  overflow: hidden;
+		  background: #ffffff;
+		}
+		.ldio-l78vwtjns6 {
+		  width: 100%;
+		  height: 100%;
+		  position: relative;
+		  transform: translateZ(0) scale(1);
+		  backface-visibility: hidden;
+		  transform-origin: 0 0; /* see note above */
+		}
+		.ldio-l78vwtjns6 div { box-sizing: content-box; }
+
+		.modal {
+		  text-align: center;
+		  padding: 0!important;
+		}
+
+		.modal:before {
+		  content: '';
+		  display: inline-block;
+		  height: 100%;
+		  vertical-align: middle;
+		  margin-right: -4px;
+		}
+
+		.modal-dialog {
+		  display: inline-block;
+		  text-align: left;
+		  vertical-align: middle;
+		}
+
+		.fade-out-x-active{
+			animation: fade-out-x 1s;
+		}
+
+		.strong-hide{
+			display: none !important;
+		}
+		@keyframes fade-out-x {
+		  0% {
+		  	opacity:1;
+		  	left:0;
+		  }
+		  100% {
+		  	transform: rotate(45deg);
+		    left:150px;
+		    top:-100px;
+		    opacity:0;
+		  }
+		}
+	</style>
+	<script type="text/javascript">
+		//倒數計時
+		var countDownDate = new Date("March 29, 2020 12:00:00").getTime();
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+
+		  // Get today's date and time
+		  var now = new Date().getTime();
+		    
+		  // Find the distance between now and the count down date
+		  var distance = countDownDate - now;
+		    
+		  // Time calculations for days, hours, minutes and seconds
+		  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		    
+		  // Output the result in an element with id="demo"
+		  $("#day").html(days);
+		  $("#hour").html(hours);
+		  $("#min").html(minutes);
+		  $("#sec").html(seconds);
+		    
+		  // If the count down is over, write some text 
+		  if (distance < 0) {
+		    clearInterval(x);
+		    $(".countdown-area").html("就是現在了！！");
+		  }
+		}, 1000);
+
+		$(document).ready(function(){
+
+			$(window).on('load', function(){
+	            $('#loader').hide(0);
+	        });
+		});
+
+		function isReplied(){
+			var url = location.href;
+			if(url.indexOf('?')!=-1){
+			    var id = "";
+			    //在此直接將各自的參數資料切割放進ary中
+			    var ary = url.split('?')[1].split('&');
+			    //此時ary的內容為：
+			    //ary[0] = 'id=U001'，ary[1] = 'name=GQSM'
+			    if(ary.length > 0 && ary[0].split('=').length > 0 && ary[0].split('=')[0] == 'replied' && ary[0].split('=')[1] == '1'){
+			    	$('#google_form').hide();
+			    	$('#thank_you').show();
+			    	$('#rsvp_area').addClass('hide-important');
+			    	$('html,body').animate({scrollTop:$('#rsvp_area').offset().top}, 500);
+			    	alert('謝謝您的祝福~');
+			    	window.history.pushState('', 'wedding', url.split('?')[0]);
+			    }
+			}
+		}
+
+		function scrollToTopMenuIndex(index){
+			$('html,body').animate({scrollTop:$('.menu-' + index).offset().top}, 500);
+		}
+	</script>
+</head>
+<body>
+	<!--Loading页面-->
+	<div id="loader" style="position: fixed;width: 100%;height: 100vh;z-index: 999999;background-color: white;text-align: center;display: none">
+		
+		<div class="d-flex flex-column justify-content-center" style="width:100%;height:100%"> 
+			<div class="p-2 align-self-center">
+				<div class="loadingio-spinner-ripple-dwq4jnyl7fk">
+					<div class="ldio-l78vwtjns6">
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+			loading...
+		</div>
+    </div>
+    <button class="btn btn-success" onclick="showQuestion()">click</button>
+	
+	<!--header for menu-->
+
+	
+	<!--footer-->
+	<div class="container-fluid footer" style="width:100%;padding:2rem 0;background-color: red">
+		<div class="d-flex justify-content-center">powered by leo</div>
+	</div>
+
+	<!-- <div class="editing d-flex flex-column justify-content-center">
+		<h1 class="justify-content-center" style="color:#fff;text-align: center">請使用手機瀏覽</h1>
+	</div> -->
+
+	<div id="question_modal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content modal-lg" style="background: rgba(0,0,0,0);border-style:none">
+	      <div class="modal-body">
+	        <div id="question" style="width: 300px;height:300px;position: static;">
+				
+			</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</body>
+</html>

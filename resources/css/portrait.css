@@ -1,0 +1,12 @@
+@media(orientation: portrait){
+	/*css 變數*/
+	:root{
+		--css-gallery-size:25vw;
+		--css-theme-bg-color:#FFF;
+		--css-header-color:#FFF;
+		--css-footer-color:#FFF;
+	}
+	body{
+		font-size: 20px;
+	}
+}
