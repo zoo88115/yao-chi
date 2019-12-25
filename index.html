@@ -19,6 +19,9 @@
     <style>
 		@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 		@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Hanalei+Fill&display=swap');
+		@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
+
 		/*loading ....*/
 		@keyframes ldio-l78vwtjns6 {
 		  0% {
@@ -112,6 +115,77 @@
 		    color: white;
 		    font-weight: 700;
 		}
+
+		.card{
+			border-radius:30px;
+			background-color: white;
+			width:100%;
+			height:100%;
+			position:absolute;
+			left:0;
+			top:0;
+			padding:0 1rem;
+		}
+
+		.card > .title{
+			font-family: 'Hanalei Fill', cursive;
+			text-align:center;
+		}
+
+		.card > .title::after{
+			content: '';
+		    width: 60%;
+		    border-color: red;
+		    border-style: solid;
+		    position: static;
+		    display: block;
+		    margin: 0 auto 2rem auto;
+		    border-width: 1px;
+		    border-style: dashed;
+		    font-size:2rem;
+		}
+
+		.card > .subscript{
+			font-family: 'Noto Sans TC', sans-serif;
+		    min-height: 80px;
+		    font-size:1.2rem;
+		    padding-top:0 !important
+		}
+
+		.btn-ans{
+			background-color:rgb(47,52,76);
+			border-radius: 10px;
+			color:white;
+			font-family: 'Noto Sans TC', sans-serif;
+			padding:1rem 1rem 1rem 2rem !important;
+			font-weight: 900;
+			margin: .5rem .5rem;
+    		font-size: 1.2rem;
+		}
+
+		.btn-ans::before{
+			content: '\f0da';
+		    font-family: 'Font Awesome 5 Free';
+		    position: relative;
+		    left: -0.8rem;
+		}
+
+		.btn-ans.btn-wrong::after{
+			content: '\f00d';
+		    font-family: 'Font Awesome 5 Free';
+		    position: absolute;
+		    right: 3.2rem;
+		    color:red;
+		}
+
+		.btn-ans.btn-right::after{
+			content: '\f111';
+		    font-family: 'Font Awesome 5 Free';
+		    position: absolute;
+		    right: 3rem;
+		    color:green;
+		}
+
 		@keyframes fade-out-x {
 		  0% {
 		  	opacity:1;
@@ -203,10 +277,15 @@
 			loading...
 		</div>
     </div>
-    <button class="btn btn-success" onclick="showQuestion()">click</button>
-	
 	<!--header for menu-->
-
+	<div style="width:100vw;height:100vh">
+		<section style="max-width:768px;height:100%;width:100%;margin:auto auto">
+			<div class="width:100%">
+				<img width="100%" height="100%" src="resources/img/wrapper.png"/>
+			</div>
+			<button class="btn btn-success" onclick="showQuestion()">click</button>
+		</section>
+	</div>
 	
 	<!--footer-->
 	<div class="container-fluid footer" style="width:100%;padding:2rem 0;background-color: red">
@@ -221,7 +300,7 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content modal-lg" style="background: rgba(0,0,0,0);border-style:none">
 	      <div class="modal-body">
-	        <div id="question" style="width: 300px;height:300px;position: static;">
+	        <div id="question" style="width: 400px;height:400px;max-height:90vw;max-height:90vw;position: static;">
 				
 			</div>
 	      </div>

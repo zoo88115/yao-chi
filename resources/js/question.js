@@ -55,11 +55,11 @@ function showQuestion(){
 	var str = '';
 	for(var i=0;i<max_size;i++){
 		randomQ_S(i);
-		str += '<div id="layer_' + i + '" class="d-flex flex-column justify-content-center" style="border-radius:30px;background-color:' + bg_color[i] + ';width:100%;height:100%;position:absolute;left:0;top:0;z-index:' + (100-i) + '">';
-		str += '<div class="p-2" style="font-size:1.8rem;padding-bottom:0 !important">Q'+ (i+1) + ':</div>';
-		str += '<div class="p-2" style="font-size:1.2rem;padding-top:0 !important">' + q[i] + '</div>';
+		str += '<div id="layer_' + i + '" class="d-flex flex-column justify-content-center card" style="z-index:' + (100-i) + '">';
+		str += '<div class="p-2 title" style="font-size:1.8rem;padding-bottom:0 !important">Question '+ (i+1) + ' : </div>';
+		str += '<div class="p-2 subscript">' + q[i] + '</div>';
 		for(var j=0;j<q_s[i].length;j++){
-			str += '<div class="p-2 btn btn-success" style="margin:.5rem .5rem;font-size:1rem" onclick="clickAns(this,\'' + q_s[i][j] +'\')">' + q_s[i][j] + '</div>';
+			str += '<div class="p-2 btn-ans" onclick="clickAns(this,\'' + q_s[i][j] +'\')">' + q_s[i][j] + '</div>';
 		}
 		str += '<div class="time">5</div>';
 		str += '</div>';
