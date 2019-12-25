@@ -17,8 +17,19 @@ var countToNumber = function (element, number, suffix, duration) {
     },
     complete: function () {
       countingFromZero = false;
+      showAfterScore(number)
     }
   });
+}
+
+function showAfterScore(score){
+	$('#count_score').animate({ 'margin-bottom': '3rem'}, 1000);
+	if(score >=70){
+		$('#count_score_area > .success').delay(1200).fadeIn(1000);
+	}else{
+		$('#count_score_area > .failed').delay(1200).fadeIn(1000);
+	}
+	$('#count_score_area > .close-modal').delay(2000).fadeIn(1000);
 }
 
 function randomQuestion(){
@@ -49,9 +60,20 @@ function randomQ_S(index){
 	}
 }
 
+function initQuestion(){
+	sel_ans.length = 0;
+	q_index = 0;
+	$('#count_score').html('0');
+}
+
 function showQuestion(){
+	initQuestion();
 	randomQuestion();
+	$("#question_modal").css('display', 'block'); 
+	var modalHeight=$(window).height() / 2 - $('#question_modal .modal-dialog').height() / 2; 
+	$("#question_modal").find('.modal-dialog').css({ 'margin-top': modalHeight });
 	$("#question_modal").modal('show');
+	
 	var str = '';
 	for(var i=0;i<max_size;i++){
 		randomQ_S(i);
@@ -59,14 +81,23 @@ function showQuestion(){
 		str += '<div class="p-2 title" style="font-size:1.8rem;padding-bottom:0 !important">Question '+ (i+1) + ' : </div>';
 		str += '<div class="p-2 subscript">' + q[i] + '</div>';
 		for(var j=0;j<q_s[i].length;j++){
-			str += '<div class="p-2 btn-ans" onclick="clickAns(this,\'' + q_s[i][j] +'\')">' + q_s[i][j] + '</div>';
+			str += '<div class="p-2 btn-ans';
+			if(q_s[i][j] == ans[i]){
+				str += ' btn-right" onclick="clickAns(this,\'' + q_s[i][j] +'\')">' + q_s[i][j] + '</div>';
+			}else{
+				str += ' btn-wrong" onclick="clickAns(this,\'' + q_s[i][j] +'\')">' + q_s[i][j] + '</div>';
+			}
+			
 		}
 		str += '<div class="time">5</div>';
 		str += '</div>';
 	}
-	str += '<div class="d-flex flex-column justify-content-center" style="border-radius:30px;background-color:' + bg_color[10] + ';width:100%;height:100%;position:absolute;left:0;top:0;z-index:' + (100-10) + '">';
+	str += '<div id="count_score_area" class="d-flex flex-column justify-content-center" style="border-radius:30px;background-color:white;width:100%;height:100%;position:absolute;left:0;top:0;z-index:' + (100-10) + '">';
 	str += '<div class="p-2" style="text-align:center">分數結算</div>';
 	str += '<div id="count_score" class="p-2" style="text-align:center">0</div>';
+	str += '<div class="failed btn">分數太低重來一次</div>';
+	str += '<div class="success btn">填寫表單</div>';
+	str += '<div class="close-modal btn" onclick="closeQuestionModal()">取消</div>';
 	str += '</div>';
 	console.log('add timeout_5');
 	timeout_5 = setTimeout(BtnCount, 1000);
@@ -90,7 +121,8 @@ BtnCount = function() {
 function clickAns(e,ans){
 	clearTimeout(timeout_5);
 	console.log('clear timeout_5');
-	$("#layer_" + q_index + ">div.time").html('5');
+	$("#layer_" + q_index).addClass('btn-clicked');
+		$("#layer_" + q_index + ">div.time").html('5');
 	sel_ans.push(ans);
 	q_index+=1;
 	randomQ_S(q_index);
@@ -142,4 +174,8 @@ function score(){
 	}
 	console.log(count);
 	countToNumber($('#count_score'), count, '', 0);
+}
+
+function closeQuestionModal(){
+	$("#question_modal").modal('hide');
 }
