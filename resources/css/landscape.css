@@ -9,4 +9,102 @@
 	body{
 		font-size: 20px;
 	}
+
+	.landscape{
+		width:inherit;
+		height:inherit;
+		background: no-repeat fixed;
+		background-size: cover;
+		background-position: center;
+	}
+	.landscape1{
+		height: 100vh !important;
+	}
+	.w2{
+		font-family: 'Pacifico', cursive;
+		color: white;
+		font-size: 3rem;
+		text-shadow: #000 3px 3px;
+	}
+	.host-invite-text{
+		color:white;
+		font-size: 1.5rem;
+		text-shadow: #000 1px 1px;
+	}
+	.host-invite{
+		color:white;
+		font-size: 1.5rem;
+		text-shadow: #000 1px 1px;
+	}
+
+	.countdown-circle{
+		width:5rem;
+		height:5rem;
+		background-color: #f0394d;
+		border-radius: 50%;
+		margin-right:2.5rem;
+	}
+	.countdown-circle > div{
+		text-align: center;
+	    font-size: 2rem;
+	    font-weight: 600;
+	    font-family: 'Pacifico';
+	    height: 4rem;
+	    line-height: 3.7rem;
+	    color:white;
+	}
+	.countdown-circle.last{
+		margin-right:0 !important;
+	}
+	.countdown-day-circle{
+		font-family: 'Oswald', cursive;
+		color: white;
+		font-size: 2rem;
+		text-shadow: #000 2px 2px;
+		width:5rem;
+		margin-right:2.5rem;
+		text-align: center;
+		padding:0 !important;
+	}
+	.countdown-day-circle.last{
+		margin-right:0 !important;
+	}
+	.countdown-text{
+		font-size:1.5rem;
+		color:white;
+		text-shadow: #000 1px 1px;
+	}
+	.countdown-area{
+		margin-top:1rem;
+	}
+	.countdown-area-2{
+		margin-top:0;
+		padding:0 !important;
+	}
+	.rsvp{
+		font-family: 'Pacifico', cursive;
+	    color: white;
+	    font-size: 3.5rem;
+	    text-shadow: #000 3px 3px 4px;
+	    text-align: center;
+	}
+	.rsvp-info{
+		font-size:1.2rem;
+		color:white;
+		text-align: center;
+		text-shadow: #000 1px 1px 2px;
+	}
+	.thank-you-eng{
+		font-family: 'Pacifico', cursive;
+	    color: white;
+	    font-size: 2rem;
+	    text-shadow: #000 2px 2px 3px;
+	    text-align: center;
+	}
+	.thank-you-tw{
+		font-size:1.2rem;
+		color:white;
+		text-align: center;
+		text-shadow: #000 2px 2px 3px;
+	}
 }

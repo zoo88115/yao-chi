@@ -256,7 +256,7 @@
 	</style>
 	<script type="text/javascript">
 		//倒數計時
-		var countDownDate = new Date("March 29, 2020 12:00:00").getTime();
+		var countDownDate = new Date("December 11, 2020 10:00:00").getTime();
 		// Update the count down every 1 second
 		var x = setInterval(function() {
 
@@ -316,7 +316,7 @@
 		}
 	</script>
 </head>
-<body>
+<body style="background-image: url('resources/img/bg.jpeg');background-size: 100% auto;">
 	<!--Loading页面-->
 	<div id="loader" style="position: fixed;width: 100%;height: 100vh;z-index: 999999;background-color: white;text-align: center;display: none">
 		
@@ -337,14 +337,83 @@
 		<section style="max-width:768px;height:100%;width:100%;margin:auto auto">
 			<div class="width:100%" style="position:relative;">
 				<img width="100%" height="100%" src="resources/img/wrapper.png"/>
-				<button class="btn btn-success" style="position:absolute;bottom:1rem;width:50%;left:25%;padding:1rem" onclick="showQuestion()">了解我們多少大挑戰</button>
 			</div>
 		</section>
-	</div>
-	
-	<!--footer-->
-	<div class="container-fluid footer" style="width:100%;padding:2rem 0;background-color: red">
-		<div class="d-flex justify-content-center">powered by leo</div>
+		<section style="max-width:768px;height:100%;width:100%;margin:auto auto">
+			<div class="container-fluid landscape1" style="width:100%;height: 50vh;padding:0;margin:0">
+				<div class="landscape" style="background-image: url('resources/img/view1.jpeg') ">
+					<div class="d-flex flex-column justify-content-center" style="position: relative;z-index: 1;width:100%;height:inherit;">
+						<div class="p-2 align-self-center w2">WHERE & WHEN</div>
+						<div class="p-2 align-self-center host-invite-text">誠摯邀請您來分享這幸福的時刻</div>
+						<div class="p-2 align-self-center host-invite">陳重堯 & 蕭方娸 敬邀</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid menu-3" style="width:100%;padding:1rem .5rem;background-color: #eee">
+			<!--婚宴資訊-->
+			<div class="row">
+				<div class="col-sm-12 col-lg-6 col-md-6 col-xl-6">
+					<div class="d-flex justify-content-center" style="padding:0;height:100%">
+						<div class="p-2 align-self-center" style="width: fit-content;margin:auto auto">
+							<div class="date-info" style="margin-bottom:.5rem;width:fit-content"><i style="margin-right:0.5rem;padding:1rem;border-radius: 50%;color:white;background-color: #FFD306;margin-right:10px" class="far fa-calendar-minus"></i>日期：2020/12/11（五） 10點</div>
+							<div class="date-info" style="margin-bottom:.5rem;width:fit-content"><i style="margin-right:0.5rem;padding:1rem;border-radius: 50%;color:white;background-color: #64A600;margin-right:10px" class="fas fas fa-h-square"></i>地點：克菈薇塔教堂</div>
+							<div class="date-info last" style="margin-bottom:.5rem;width:fit-content"><i style="margin-right:0.5rem;padding:1rem;border-radius: 50%;color:white;background-color: red;margin-right:10px" class="fas fa-map-marker-alt"></i>地址：<div style="    font-size: .9rem;float: right;line-height: 3.4rem;">沖縄県国頭郡恩納村字瀬良垣2450</div></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-lg-6 col-md-6 col-xl-6">
+					<div class="p-2 align-self-center-12" style="padding:0">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3570.5178281727335!2d127.85706551379735!3d26.503465483970796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34e5038529c1f023%3A0x4c6b25afd3dc0529!2sCoralvita%20Chapel!5e0!3m2!1szh-TW!2stw!4v1577324304196!5m2!1szh-TW!2stw" width="100%" height="250px" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+					</div>
+				</div>
+			</div>
+			<!--map-->
+			
+		</div>
+		<!--風景3-->
+		<div class="container-fluid" style="width:100%;padding:0">
+			<div class="d-flex flex-column justify-content-center" style="width:100%;background-image: url(resources/img/CoralvitaChapel.png);background-size: cover;background-position: center;;padding: 4rem 0">
+					<div class="p-2 align-self-center w2">Don't Miss It!</div>
+					<div class="p-2 align-self-center countdown-text">: : : : : : 讓我們一起來倒數這值得紀念的一刻 : : : : : :</div>
+					<div class="p-2 countdown-area">
+						<div class="d-flex justify-content-center">
+							<div class="countdown-circle d-flex flex-column justify-content-center"><div id="day">999</div></div>
+							<div class="countdown-circle d-flex flex-column justify-content-center"><div id="hour">24</div></div>
+							<div class="countdown-circle d-flex flex-column justify-content-center"><div id="min">60</div></div>
+							<div class="countdown-circle d-flex flex-column justify-content-center last"><div id="sec">60</div></div>
+						</div>
+					</div>
+					<div class="p-2 countdown-area-2">
+						<div class="d-flex justify-content-center">
+							<div class="p-2 countdown-day-circle">DAY</div>
+							<div class="p-2 countdown-day-circle">HOUR</div>
+							<div class="p-2 countdown-day-circle">MIN</div>
+							<div class="p-2 countdown-day-circle last">SEC</div>
+						</div>
+					</div>
+					<div id="rsvp_area" class="d-flex flex-column justify-content-center" style="margin-top:2rem">
+						<div class="p-2 rsvp">RSVP</div>
+						
+						<div class="p-2 rsvp-info">誠摯的邀請您來參與及見證我們最重要的時刻</div>
+						<div class="p-2 rsvp-info">我們懷著喜悅與感謝的心，期盼您的光臨。</div>
+						<div class="p-2 rsvp-info">希望您們能完成問題並協助完成表單</div>
+						<div class="p-2 rsvp-info">無論是否出席我們都能感受到您們的祝福！</div>
+						<button class="btn btn-success" style="width:50%;margin:1rem 25%;padding:1rem" onclick="showQuestion()">回答問題</button>
+						
+					</div>
+					<div id="thank_you" class="container-fluid" style="padding:2rem;text-align: center;display: none">
+						<div class="p-2 thank-you-eng">Thanks for your reply</div>
+						<div class="p-2 thank-you-tw">感謝你的回覆</div>
+					</div>
+				</div>
+		</div>
+		</section>
+		<section style="max-width:768px;height:100%;width:100%;margin:auto auto">
+			<div class="container-fluid footer" style="width:100%;padding:2rem 0;background-color: white">
+				<div class="d-flex justify-content-center">powered by yao</div>
+			</div>
+		</section>
+		
 	</div>
 
 	<!-- <div class="editing d-flex flex-column justify-content-center">

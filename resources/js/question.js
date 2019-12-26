@@ -23,7 +23,12 @@ var countToNumber = function (element, number, suffix, duration) {
 }
 
 function showAfterScore(score){
-	$('#count_score').animate({ 'margin-bottom': '3rem'}, 1000);
+	if($("#count_score_area").width() < ($("#count_score_area").height() - 30)){
+		$('#count_score').animate({ 'margin-bottom': '4.5rem'}, 1000);
+	}else{
+		$('#count_score').animate({ 'margin-bottom': '3rem'}, 1000);
+	}
+
 	if(score >=70){
 		$('#count_score_area > .success').delay(1200).fadeIn(1000);
 	}else{
@@ -75,6 +80,11 @@ function showQuestion(){
 	$("#question_modal").modal('show');
 	
 	var str = '';
+	str += '<div class="d-flex flex-column justify-content-center card" style="z-index:101;padding:3rem">';
+	str += '<div class="p-2" style="color:red;text-align:center;font-size:1.5rem">提醒</div>';
+	str += '<div class="p-2" style="text-align:center">總共有十個問題，每題回答時間為五秒，分數超過七十分即可填寫表單</div>';
+	str += '<div class="btn btn-success" onclick="letGO(this)" style="margin-top:1rem">開始作答</div>';
+	str += '</div>';
 	for(var i=0;i<max_size;i++){
 		randomQ_S(i);
 		str += '<div id="layer_' + i + '" class="d-flex flex-column justify-content-center card" style="z-index:' + (100-i) + '">';
@@ -100,7 +110,7 @@ function showQuestion(){
 	str += '<div class="close-modal btn" onclick="closeQuestionModal()">取消</div>';
 	str += '</div>';
 	console.log('add timeout_5');
-	timeout_5 = setTimeout(BtnCount, 1000);
+	//timeout_5 = setTimeout(BtnCount, 1000);
 
 	$('#question').html(str);
 }
@@ -117,6 +127,12 @@ BtnCount = function() {
     	console.log('add BtnCount');
     }
 };
+
+function letGO(e){
+	$(e).parent().addClass('fade-out-x-active');
+	setTimeout(function(){ $(e).parent().addClass('strong-hide'); }, 900);
+	timeout_5 = setTimeout(BtnCount, 1000);
+}
 
 function clickAns(e,ans){
 	clearTimeout(timeout_5);
