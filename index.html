@@ -60,7 +60,6 @@
 		  height: 234px;
 		  display: inline-block;
 		  overflow: hidden;
-		  background: #ffffff;
 		}
 		.ldio-l78vwtjns6 {
 		  width: 100%;
@@ -240,6 +239,9 @@
 		    left: 20%;
 		    display: none;
 		}
+		.hide-important{
+			display: none !important;
+		}
 
 		@keyframes fade-out-x {
 		  0% {
@@ -314,11 +316,26 @@
 		function scrollToTopMenuIndex(index){
 			$('html,body').animate({scrollTop:$('.menu-' + index).offset().top}, 500);
 		}
+
+		function thankyouReply(){
+			alert('謝謝您的祝福~');
+			$('#loader').hide();
+			$('#google_modal').modal('hide');
+			$('#thank_you').show();
+			$('#rsvp_area').addClass('hide-important');
+			$('#hide').show();
+		}
+
+		function waitForPost(){
+			$('#loader').show();
+			$('input[type="submit"]').trigger('click');
+		}
 	</script>
 </head>
-<body style="background-image: url('resources/img/bg.jpeg');background-size: 100% auto;">
+<!--background-image: url('resources/img/bg.jpeg');background-size: 100% auto;-->
+<body style="">
 	<!--Loading页面-->
-	<div id="loader" style="position: fixed;width: 100%;height: 100vh;z-index: 999999;background-color: white;text-align: center;display: none">
+	<div id="loader" style="position: fixed;width: 100%;height: 100vh;z-index: 999999;background-color: rgba(0,0,0,0.8);text-align: center;display: none;color:white">
 		
 		<div class="d-flex flex-column justify-content-center" style="width:100%;height:100%"> 
 			<div class="p-2 align-self-center">
@@ -329,17 +346,17 @@
 					</div>
 				</div>
 			</div>
-			loading...
+			資料傳送中．．．
 		</div>
     </div>
 	<!--header for menu-->
 	<div style="width:100vw">
-		<section style="max-width:768px;height:100%;width:100%;margin:auto auto">
+		<section style="max-width:768px;height:100%;width:100%;margin:auto auto;box-shadow: 0px 0px 10px #000;">
 			<div class="width:100%" style="position:relative;">
 				<img width="100%" height="100%" src="resources/img/wrapper.png"/>
 			</div>
-		</section>
-		<section style="max-width:768px;height:100%;width:100%;margin:auto auto">
+<!-- 		</section>
+		<section style="max-width:768px;height:100%;width:100%;margin:auto auto"> -->
 			<div class="container-fluid landscape1" style="width:100%;height: 50vh;padding:0;margin:0">
 				<div class="landscape" style="background-image: url('resources/img/view1.jpeg') ">
 					<div class="d-flex flex-column justify-content-center" style="position: relative;z-index: 1;width:100%;height:inherit;">
@@ -349,9 +366,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="container-fluid menu-3" style="width:100%;padding:1rem .5rem;background-color: #eee">
-			<!--婚宴資訊-->
-			<div class="row">
+		<div class="container-fluid menu-3" style="width:100%;padding:1rem 0rem;background-color: #eee">
+			<div class="row" style="margin:0">
 				<div class="col-sm-12 col-lg-6 col-md-6 col-xl-6">
 					<div class="d-flex justify-content-center" style="padding:0;height:100%">
 						<div class="p-2 align-self-center" style="width: fit-content;margin:auto auto">
@@ -407,8 +423,8 @@
 					</div>
 				</div>
 		</div>
-		</section>
-		<section style="max-width:768px;height:100%;width:100%;margin:auto auto">
+<!-- 		</section>
+		<section style="max-width:768px;height:100%;width:100%;margin:auto auto"> -->
 			<div class="container-fluid footer" style="width:100%;padding:2rem 0;background-color: white">
 				<div class="d-flex justify-content-center">powered by yao</div>
 			</div>
@@ -430,6 +446,94 @@
 	      </div>
 	    </div>
 	  </div>
+	</div>
+
+	<div id="google_modal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content modal-lg" style="background: rgba(0,0,0,0);border-style:none">
+	      		<div class="modal-body" style="background-color:white;border-style: solid;">
+					<div style="width:100%;font-size:16px">
+						<iframe name="hidden_iframe" id="hidden_iframe" style="display: none;" onload="this.onload=function(){thankyouReply()}"></iframe>
+						<form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdbYUvnppirHGfkudRo46IAKhV8Ka0HK3dY4IapYbcJk34hZg/formResponse" method="POST" id="ss-form" target="hidden_iframe" autocomplete="on"><ol role="list" class="ss-question-list" style="padding-left: 0;">
+
+						<div class="p-2" style='margin-bottom:1rem'>給每一個曾參與我們成長過程的您：<br/>
+							我們從國中認識到現在，我們終於要結婚了！<br/>
+							在這個對我們來說非常重要的日子，<br/>
+							我們衷心希望能有您的參與，<br/>
+							讓這個充滿意義的日子更為圓滿！<br/><br/>
+
+							因國外教堂婚禮場地人數限制40人，煩請先行告知人數以利統計~<br/><br/>
+
+							<p style="text-align: right">Leo & Jessica 敬上</p>
+						</div>
+						
+						<b>姓名</b>
+						<div class="input-group mb-3">
+							<input type="text" name="entry.1263821132" value="" class="form-control" id="entry_1263821132" dir="auto" aria-label="您的姓名 請留下真實中文姓名，不要留小名喔！謝謝 " aria-required="true" required="" title="" placeholder="您的姓名 請留下真實中文姓名，不要留小名喔！謝謝">
+						</div>
+
+						<b>與新人的關係</b>
+						<div class="input-group mb-3">
+							<select class="custom-select" name="entry.2106041201" id="entry_2106041201" aria-label="與新人的關係  " aria-required="true" required=""><option value=""></option>
+							<option value="&#26032;&#37070;&#35242;&#25114;">新郎親戚</option> <option value="&#26032;&#37070;&#21516;&#23416;">新郎同學</option> <option value="&#26032;&#37070;&#21516;&#20107;">新郎同事</option> <option value="&#26032;&#23064;&#35242;&#25114;">新娘親戚</option> <option value="&#26032;&#23064;&#21516;&#23416;">新娘同學</option> <option value="&#26032;&#23064;&#21516;&#20107;">新娘同事</option> <option value="&#30007;&#26041;&#23478;&#38263;&#21516;&#20107;&amp;&#26379;&#21451;">男方家長同事&amp;朋友</option> <option value="&#22899;&#26041;&#23478;&#38263;&#21516;&#20107;&amp;&#26379;&#21451;">女方家長同事&amp;朋友</option> <option value="&#20854;&#20182;">其他</option></select>
+						</div>
+						
+						<b>您是否會出席沖繩婚禮儀式(12/11 10:30)？</b>
+						<div class="input-group mb-3">
+							<select class="custom-select" name="entry.1791665139" id="entry_1791665139" aria-label="您是否會出席沖繩婚禮儀式(12/11 10:30)？  " aria-required="true" required=""><option value=""></option>
+							<option value="&#20986;&#24109;&#65292;&#32085;&#23565;&#21040;&#22580;&#65281;">出席，絕對到場！</option> <option value="&#28961;&#27861;&#20986;&#24109;&#65292;&#31069;&#20320;&#20497;&#24184;&#31119;&#32654;&#28415;&#65281;">無法出席，祝你們幸福美滿！</option></select>
+						</div>
+						
+
+						<b>參加人數(含本人)</b>
+						<div class="input-group mb-3">
+							<select class="custom-select" name="entry.1711431407" id="entry_1711431407" aria-label="參加人數(含本人) 因觀禮場地有限！如有攜伴請告知喔！ " aria-required="true" required=""><option value=""></option>
+							<option value="0">0</option> <option value="1">1</option> <option value="2">2</option></select>
+						</div>
+						
+
+						<b>您是否會出席沖繩婚宴(12/11 12:30)？</b>
+						<div class="input-group mb-3">
+							<select class="custom-select" name="entry.170657915" id="entry_170657915" aria-label="您是否會出席沖繩婚宴(12/11 12:30)？  " aria-required="true" required=""><option value=""></option>
+							<option value="&#20986;&#24109;&#65292;&#35531;&#31639;&#25105;&#19968;&#20221;&#65281;">出席，請算我一份！</option> <option value="&#28961;&#27861;&#20986;&#24109;&#65281;">無法出席！</option></select>
+						</div>
+						
+						<b>參加人數(含本人)</b>
+						<div class="input-group mb-3">
+							<select class="custom-select" name="entry.1655416379" id="entry_1655416379" aria-label="參加人數(含本人) 如有攜伴請告知喔！避免親友沒有位置享用美食！ " aria-required="true" required=""><option value=""></option>
+							<option value="0">0</option> <option value="1">1</option> <option value="2">2</option></select>
+						</div>
+
+						<b>共幾位吃素</b>
+						<div class="input-group mb-3">
+							<select class="custom-select" name="entry.1295603944" id="entry_1295603944" aria-label="共幾位吃素  " aria-required="true" required=""><option value=""></option>
+							<option value="0">0</option> <option value="1">1</option> <option value="2">2</option></select>
+						</div>
+						
+						<b>聯絡電話</b>
+						<div class="input-group mb-3">
+							<input type="text" name="entry.878964154" value="" class="form-control" id="entry_878964154" dir="auto" aria-label=" 請務必填寫，若有問題方便我們聯絡的到您喔~ " aria-required="true" required="" title="">
+						</div>
+
+						<b>喜帖寄送地址</b>
+						<div class="input-group mb-3">
+							<input type="text" name="entry.861079328" value="" class="form-control" id="entry_861079328" dir="auto" aria-label="喜帖寄送地址 請填寫詳細地址及郵遞區號，確保喜帖可以到您的手中喔 " aria-required="true" required="" title="" placeholder="請填寫詳細地址及郵遞區號，確保喜帖可以到您的手中喔">
+						</div>
+
+						<b>有什麼祝福的話想要對我們說的嗎</b>
+						<div class="input-group mb-3">
+							<input type="text" name="entry.2127024887" value="" class="form-control" id="entry_2127024887" dir="auto" aria-label="有什麼祝福的話想要對我們說的嗎" title="">
+						</div>
+
+						<div class="btn btn-success" onclick="waitForPost()">送出</div>
+
+						<input type="submit" name="submit" value="&#25552;&#20132;" id="ss-submit" class="jfk-button jfk-button-action " style="display:none">
+						
+						</form>
+					</div>
+	      		</div>
+	    	</div>
+	  	</div>
 	</div>
 </body>
 </html>

@@ -22,6 +22,15 @@ var countToNumber = function (element, number, suffix, duration) {
   });
 }
 
+function fillOutTheForm(){
+	$("#question_modal").modal('hide');
+	$("#google_modal").modal('show');
+}
+
+function replayGame(){
+	showQuestion();
+}
+
 function showAfterScore(score){
 	if($("#count_score_area").width() < ($("#count_score_area").height() - 30)){
 		$('#count_score').animate({ 'margin-bottom': '4.5rem'}, 1000);
@@ -105,8 +114,8 @@ function showQuestion(){
 	str += '<div id="count_score_area" class="d-flex flex-column justify-content-center" style="border-radius:30px;background-color:white;width:100%;height:100%;position:absolute;left:0;top:0;z-index:' + (100-10) + '">';
 	str += '<div class="p-2" style="text-align:center">分數結算</div>';
 	str += '<div id="count_score" class="p-2" style="text-align:center">0</div>';
-	str += '<div class="failed btn">分數太低重來一次</div>';
-	str += '<div class="success btn">填寫表單</div>';
+	str += '<div class="failed btn" onclick="replayGame()">分數太低重來一次</div>';
+	str += '<div class="success btn" onclick="fillOutTheForm()">填寫表單</div>';
 	str += '<div class="close-modal btn" onclick="closeQuestionModal()">取消</div>';
 	str += '</div>';
 	console.log('add timeout_5');
